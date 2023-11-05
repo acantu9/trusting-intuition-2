@@ -21,9 +21,9 @@
         let images = [];
 
         for (let i = 1; i <= 300; i++) {
-            images.push("/assets/img/ocean animals - " + i + ".png");
-            //images.push("/assets/img/stamps - " + i + ".png");
-            //images.push("/assets/img/dogs - " + i + ".png");
+            images.push("/assets/img/ocean animals - " + i + ".png"),
+            images.push("/assets/img/stamps - " + i + ".png"),
+            images.push("/assets/img/dogs - " + i + ".png");
             //images.push("/assets/img/cats - " + i + ".png");
         }
 
@@ -44,11 +44,26 @@
             for (let i = 0; i < randomImages.length; i++) {
                 let img = document.createElement("img");
                 img.src = randomImages[i];
-                img.height = 400; // Set the height of the image
-                img.width = 400; // Set the width of the image
-                img.padding = 100;
+                img.height = 200; // Set the height of the image
+                img.width = 200; // Set the width of the image
+                img.style.padding = "50px"; // Set the padding around the image
+                img.style.position = "absolute"; // Set the position of the image
+                img.style.top = i === 1 ? "250px" : "75%"; // Move the second image down by 50 pixels
+                img.style.left = "50%"; // P50sition the image horizontally in the center
+                img.style.transform = "translate(-50%, -50%)"; // Adjust the position to center the image
+
                 slideshow.appendChild(img);
             }
+
+            // for (let i = 0; i < randomImages.length; i++) {
+            //     let img = document.createElement("img");
+            //     img.src = randomImages[i];
+            //     img.height = 200; // Set the height of the image
+            //     img.width = 200; // Set the width of the image
+            //     img.style.padding = "50px";
+                
+            //     slideshow.appendChild(img);
+            // }
 
             let rightAnswer = randomImages[Math.floor(Math.random() * randomImages.length)];
             let choicesDiv = document.getElementById("choices");
@@ -56,8 +71,10 @@
             rightAnswerDiv.innerHTML = "<img src='" + rightAnswer + "'>";
 
             let rightAnswerImg = rightAnswerDiv.getElementsByTagName("img")[0];
-            rightAnswerImg.height = 600; // Set the height of the right answer image
-            rightAnswerImg.width = 600; // Set the width of the right answer image
+            rightAnswerImg.height = 300; // Set the height of the right answer image
+            rightAnswerImg.width = 300; // Set the width of the right answer image
+            rightAnswerImg.style.position = "absolute"; // Set the position of the image
+            rightAnswerImg.style.top = "250px";
 
             // Show the right answer div after a delay
             setTimeout(function() {
