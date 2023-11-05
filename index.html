@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trusting Intuition</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="game">
+        <div id="choices">
+        <h1>CHOOSE ONE</h1>
+        <div id="slideshow"></div>
+        </div>
+        <div id="right-answer" style="display: none;"></div>
+    </div>
+
+    <script>
+        let images = [];
+
+        for (let i = 1; i <= 300; i++) {
+            images.push("/assets/img/ocean animals - " + i + ".png");
+            //images.push("/assets/img/stamps - " + i + ".png");
+            //images.push("/assets/img/dogs - " + i + ".png");
+            //images.push("/assets/img/cats - " + i + ".png");
+        }
+
+        function displayImages() {
+            let randomImages = [];
+
+            while (randomImages.length < 2) {
+                let randomImage = images[Math.floor(Math.random() * images.length)];
+
+                if (!randomImages.includes(randomImage)) {
+                    randomImages.push(randomImage);
+                }
+            }
+
+            let slideshow = document.getElementById("slideshow");
+            slideshow.innerHTML = "";
+
+            for (let i = 0; i < randomImages.length; i++) {
+                let img = document.createElement("img");
+                img.src = randomImages[i];
+                img.height = 400; // Set the height of the image
+                img.width = 400; // Set the width of the image
+                img.padding = 100;
+                slideshow.appendChild(img);
+            }
+
+            let rightAnswer = randomImages[Math.floor(Math.random() * randomImages.length)];
+            let choicesDiv = document.getElementById("choices");
+            let rightAnswerDiv = document.getElementById("right-answer");
+            rightAnswerDiv.innerHTML = "<img src='" + rightAnswer + "'>";
+
+            let rightAnswerImg = rightAnswerDiv.getElementsByTagName("img")[0];
+            rightAnswerImg.height = 600; // Set the height of the right answer image
+            rightAnswerImg.width = 600; // Set the width of the right answer image
+
+            // Show the right answer div after a delay
+            setTimeout(function() {
+                choicesDiv.style.display = "none";
+                rightAnswerDiv.style.display = "block";
+            }, 7000); // 7 seconds delay
+            
+            // Hide the right answer div after a delay
+            setTimeout(function() {
+                choicesDiv.style.display = "block";
+                rightAnswerDiv.style.display = "none";
+            }, 10000); // 10 seconds delay
+        }
+
+        displayImages();
+        setInterval(displayImages, 10000); // Repeat every 10 seconds 
+    </script>
+</body>
+</html>

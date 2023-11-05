@@ -1,0 +1,20 @@
+html {
+    height: 645px;
+    background: linear-gradient(45deg, #b4bde8, #c9b0d7, #d7a4c7, #f2a9c3, #f9c1cc);
+}
+  
+body {
+    color: #fff;
+    text-align: center;
+    font-family: 'Concert One', sans-serif;
+    font-size: 30px;
+}
+
+#slideshow {
+    margin-top: 80px;
+}
+
+#right-answer {
+    align-items: center;
+    margin-top: 10px;
+}
