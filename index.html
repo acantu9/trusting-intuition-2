@@ -11,7 +11,7 @@
 <body>
     <div id="game">
         <div id="choices">
-        <h1>CHOOSE ONE</h1>
+        <h1 id="or">OR</h1>
         <div id="slideshow"></div>
         </div>
         <div id="right-answer" style="display: none;"></div>
@@ -57,6 +57,13 @@
 
             let rightAnswer = randomImages[Math.floor(Math.random() * randomImages.length)];
             let choicesDiv = document.getElementById("choices");
+            let orDiv = document.getElementById("or");
+            orDiv.style.position = "absolute"; // Set the position of the image
+            orDiv.style.top = "280px"; // Move the image down
+            orDiv.style.left = "50%"; // P50sition the image horizontally in the center
+            orDiv.style.transform = "translate(-50%, -50%)"; // Adjust the position to center the image
+
+
             let rightAnswerDiv = document.getElementById("right-answer");
             rightAnswerDiv.innerHTML = "<img src='" + rightAnswer + "'>";
 
